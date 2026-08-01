@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://ccxbnighl6hti"]
+
+[ext_resource type="Script" uid="uid://dwasu3l64yd1c" path="res://scenes/EnemyType.gd" id="1_k0cfx"]
+[ext_resource type="Texture2D" uid="uid://21u0mrromqhl" path="res://assets/Enemies/14 v1.png" id="2_cjm1u"]
+
+[resource]
+script = ExtResource("1_k0cfx")
+title = "Pig"
+texture = ExtResource("2_cjm1u")
+damage = 4.0
+metadata/_custom_type_script = "uid://dwasu3l64yd1c"

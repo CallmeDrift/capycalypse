@@ -24,6 +24,7 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://resources/": "yellow",
+"res://resources/Enemies/": "red",
 "res://shaders/": "purple"
 }
 

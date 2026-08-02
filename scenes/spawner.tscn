@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://cwlpyn72ggub7" path="res://scenes/spawner.gd" id="1_ttk4a"]
 [ext_resource type="PackedScene" uid="uid://3lpvnhqbxhib" path="res://scenes/enemy.tscn" id="2_mcln3"]
 [ext_resource type="Script" uid="uid://dwasu3l64yd1c" path="res://scenes/EnemyType.gd" id="3_p5s3f"]
-[ext_resource type="Resource" uid="uid://xwxlh0axe0cp" path="res://resources/BattleRabbit.tres" id="4_e3f8v"]
-[ext_resource type="Resource" uid="uid://clx2v30r0n6fh" path="res://resources/Demonium.tres" id="5_3rx28"]
-[ext_resource type="Resource" uid="uid://dd2biubdugt7x" path="res://resources/Frog.tres" id="6_m1kbb"]
-[ext_resource type="Resource" uid="uid://ccxbnighl6hti" path="res://resources/Pig.tres" id="7_q0apd"]
-[ext_resource type="Resource" uid="uid://bj6bhi64vo5gc" path="res://resources/Seed.tres" id="8_07n7x"]
+[ext_resource type="Resource" uid="uid://xwxlh0axe0cp" path="res://resources/Enemies/BattleRabbit.tres" id="4_e3f8v"]
+[ext_resource type="Resource" uid="uid://clx2v30r0n6fh" path="res://resources/Enemies/Demonium.tres" id="5_3rx28"]
+[ext_resource type="Resource" uid="uid://dd2biubdugt7x" path="res://resources/Enemies/Frog.tres" id="6_m1kbb"]
+[ext_resource type="Resource" uid="uid://ccxbnighl6hti" path="res://resources/Enemies/Pig.tres" id="7_q0apd"]
+[ext_resource type="Resource" uid="uid://bj6bhi64vo5gc" path="res://resources/Enemies/Seed.tres" id="8_07n7x"]
 
 [node name="Spawner" type="Node2D" unique_id=1830302588]
 script = ExtResource("1_ttk4a")

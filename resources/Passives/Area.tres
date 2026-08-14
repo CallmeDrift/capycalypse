@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="PassiveItem" format=3 uid="uid://yo4ljqfrbyt2"]
+
+[ext_resource type="Script" uid="uid://qt1h0pi4ioca" path="res://scenes/PassiveItem.gd" id="1_a5fo0"]
+[ext_resource type="Texture2D" uid="uid://cs1tk3a11ggqw" path="res://assets/PassiveItems/street_lighjt.png" id="2_4ypm2"]
+[ext_resource type="Script" uid="uid://ewdyawjgpy5d" path="res://scenes/Stats.gd" id="3_akpal"]
+
+[sub_resource type="Resource" id="Resource_afj1b"]
+script = ExtResource("3_akpal")
+description = "+25 Attack Range"
+area = 25.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_uf1rx"]
+script = ExtResource("3_akpal")
+description = "+35 Attack Range"
+area = 35.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_ls4v3"]
+script = ExtResource("3_akpal")
+description = "+45 Attack Range"
+area = 45.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[resource]
+script = ExtResource("1_a5fo0")
+upgrades = Array[ExtResource("3_akpal")]([SubResource("Resource_afj1b"), SubResource("Resource_uf1rx"), SubResource("Resource_ls4v3")])
+title = "Area"
+texture = ExtResource("2_4ypm2")
+metadata/_custom_type_script = "uid://qt1h0pi4ioca"

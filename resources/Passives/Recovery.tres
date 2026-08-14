@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="PassiveItem" format=3 uid="uid://c0ugp55ug2tjn"]
+
+[ext_resource type="Script" uid="uid://qt1h0pi4ioca" path="res://scenes/PassiveItem.gd" id="1_n7r47"]
+[ext_resource type="Texture2D" uid="uid://dpme04xfjkdpr" path="res://assets/PassiveItems/health_potion.jpg" id="2_wngvr"]
+[ext_resource type="Script" uid="uid://ewdyawjgpy5d" path="res://scenes/Stats.gd" id="3_xqvng"]
+
+[sub_resource type="Resource" id="Resource_ub46o"]
+script = ExtResource("3_xqvng")
+description = "+0.2 health/sec"
+recovery = 0.2
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_ac4g7"]
+script = ExtResource("3_xqvng")
+description = "+0.4 health/second"
+recovery = 0.4
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_53i7x"]
+script = ExtResource("3_xqvng")
+description = "+0.6 Health/Second"
+recovery = 0.6
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[resource]
+script = ExtResource("1_n7r47")
+upgrades = Array[ExtResource("3_xqvng")]([SubResource("Resource_ub46o"), SubResource("Resource_ac4g7"), SubResource("Resource_53i7x")])
+title = "Recovery"
+texture = ExtResource("2_wngvr")
+metadata/_custom_type_script = "uid://qt1h0pi4ioca"

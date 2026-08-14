@@ -20,6 +20,8 @@ func _physics_process(delta: float) -> void:
 		position += direction * speed * delta
 
 func follow(_targer: CharacterBody2D):
+	if type is Chest:
+		return
 	can_follow = true
 
 func _on_body_entered(body: Node2D) -> void:

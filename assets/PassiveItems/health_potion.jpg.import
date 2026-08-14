@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2smlcl1f2ej2"
-path="res://.godot/imported/magnet.png-0279fd4242a2afbf152d3cdfd24b72d2.ctex"
+uid="uid://dpme04xfjkdpr"
+path="res://.godot/imported/health_potion.jpg-980d6778147938b422715f4fa4fcf5c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gems/magnet.png"
-dest_files=["res://.godot/imported/magnet.png-0279fd4242a2afbf152d3cdfd24b72d2.ctex"]
+source_file="res://assets/PassiveItems/health_potion.jpg"
+dest_files=["res://.godot/imported/health_potion.jpg-980d6778147938b422715f4fa4fcf5c8.ctex"]
 
 [params]
 

@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://ccxbnighl6hti"]
 
+[ext_resource type="Script" uid="uid://c3cg0pnoy5hsx" path="res://scenes/PickupResource.gd" id="1_ips41"]
 [ext_resource type="Script" uid="uid://dwasu3l64yd1c" path="res://scenes/EnemyType.gd" id="1_k0cfx"]
 [ext_resource type="Texture2D" uid="uid://21u0mrromqhl" path="res://assets/Enemies/14 v1.png" id="2_cjm1u"]
+[ext_resource type="Resource" uid="uid://t2driafuvxov" path="res://resources/Pickups/Green_gem.tres" id="2_fxcpx"]
 
 [resource]
 script = ExtResource("1_k0cfx")
@@ -9,4 +11,5 @@ title = "Pig"
 texture = ExtResource("2_cjm1u")
 health = 6.0
 damage = 4.0
+drops = Array[ExtResource("1_ips41")]([ExtResource("2_fxcpx")])
 metadata/_custom_type_script = "uid://dwasu3l64yd1c"

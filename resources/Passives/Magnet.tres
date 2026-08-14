@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="PassiveItem" format=3 uid="uid://b7omfldjd46tv"]
+
+[ext_resource type="Script" uid="uid://qt1h0pi4ioca" path="res://scenes/PassiveItem.gd" id="1_ipepk"]
+[ext_resource type="Texture2D" uid="uid://c2smlcl1f2ej2" path="res://assets/Gems/magnet.png" id="2_m45mi"]
+[ext_resource type="Script" uid="uid://ewdyawjgpy5d" path="res://scenes/Stats.gd" id="3_xabn6"]
+
+[sub_resource type="Resource" id="Resource_7ddre"]
+script = ExtResource("3_xabn6")
+description = "+15 magnet range"
+magnet = 15.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_qjeyg"]
+script = ExtResource("3_xabn6")
+description = "+20 magnet range"
+magnet = 20.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_3qnke"]
+script = ExtResource("3_xabn6")
+description = "+25 magnet range"
+magnet = 25.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[resource]
+script = ExtResource("1_ipepk")
+upgrades = Array[ExtResource("3_xabn6")]([SubResource("Resource_7ddre"), SubResource("Resource_qjeyg"), SubResource("Resource_3qnke")])
+title = "Magnet"
+texture = ExtResource("2_m45mi")
+metadata/_custom_type_script = "uid://qt1h0pi4ioca"

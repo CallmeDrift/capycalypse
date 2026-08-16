@@ -21,13 +21,13 @@ var elite : bool = false:
 	set(value):
 		elite = value
 		if value:
-			$Sprite2D.material = load("res://shaders/rainbow.tres")
+			$AnimatedSprite2D.sprite_frames = load("res://assets/Enemies/batboss.tres")
+			$AnimatedSprite2D.play("default")
 			scale = Vector2(1.5, 1.5)
 
 var type: Enemy:
 	set(value):
 		type=value
-		$Sprite2D.texture = value.texture
 		damage = value.damage
 		health = value.health
 
@@ -60,8 +60,8 @@ func damage_popup(amount):
 
 func take_damage(amount):
 	var tween = get_tree().create_tween()
-	tween.tween_property($Sprite2D, "modulate", Color(3, 0.25, 0.25), 0.2)
-	tween.chain().tween_property($Sprite2D, "modulate", Color(1,1,1), 0.2)
+	tween.tween_property($AnimatedSprite2D, "modulate", Color(3, 0.25, 0.25), 0.2)
+	tween.chain().tween_property($AnimatedSprite2D, "modulate", Color(1,1,1), 0.2)
 	tween.bind_node(self)
 	
 	damage_popup(amount)

@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://beyevuffjtwim"]
+
+[ext_resource type="Texture2D" uid="uid://c5gxiu00gwqu5" path="res://assets/Enemies/spritesheetboss.png" id="1_pnvlm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_namqb"]
+atlas = ExtResource("1_pnvlm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhj7c"]
+atlas = ExtResource("1_pnvlm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dew76"]
+atlas = ExtResource("1_pnvlm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb47e"]
+atlas = ExtResource("1_pnvlm")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_namqb")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_vhj7c")
+}, {
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_dew76")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_bb47e")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]

@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Lightning" format=3 uid="uid://dyui1vq62y05b"]
+
+[ext_resource type="Texture2D" uid="uid://d07ob8rtldd1m" path="res://assets/Tiles/lightning_ring.png" id="1_2t3ja"]
+[ext_resource type="Resource" uid="uid://caxcvtlpy6co3" path="res://resources/Weapons/LightningLoop.tres" id="1_e1xcb"]
+[ext_resource type="PackedScene" uid="uid://c8foq2seou0k8" path="res://scenes/projectile.tscn" id="2_7hp7m"]
+[ext_resource type="Script" uid="uid://bjy65agqjqmth" path="res://scenes/Lightning.gd" id="3_4xcio"]
+[ext_resource type="Resource" uid="uid://cd8ah5rl7ql1j" path="res://resources/Passives/Might.tres" id="3_lge1q"]
+[ext_resource type="Texture2D" uid="uid://de567fcq4v5re" path="res://assets/Tiles/lightning_attack.png" id="4_e1xcb"]
+[ext_resource type="Script" uid="uid://dctw2lhdoaop4" path="res://scenes/Upgrade.gd" id="5_lge1q"]
+[ext_resource type="Script" uid="uid://3o5up3hwcjeg" path="res://scenes/LightningUpgrade.gd" id="6_7hp7m"]
+
+[sub_resource type="Resource" id="Resource_fulsm"]
+script = ExtResource("6_7hp7m")
+amount = 1
+description = "+1 Strike"
+metadata/_custom_type_script = "uid://3o5up3hwcjeg"
+
+[sub_resource type="Resource" id="Resource_4r5pv"]
+script = ExtResource("6_7hp7m")
+cooldown = -1.0
+description = "-1 Second"
+metadata/_custom_type_script = "uid://3o5up3hwcjeg"
+
+[sub_resource type="Resource" id="Resource_60mlk"]
+script = ExtResource("6_7hp7m")
+amount = 1
+description = "+1 Strike"
+metadata/_custom_type_script = "uid://3o5up3hwcjeg"
+
+[sub_resource type="Resource" id="Resource_i4ail"]
+script = ExtResource("6_7hp7m")
+damage = 3.0
+description = "+3 damage"
+metadata/_custom_type_script = "uid://3o5up3hwcjeg"
+
+[sub_resource type="Resource" id="Resource_a38lo"]
+script = ExtResource("6_7hp7m")
+amount = 1
+description = "+1 Strike"
+metadata/_custom_type_script = "uid://3o5up3hwcjeg"
+
+[resource]
+script = ExtResource("3_4xcio")
+amount = 2
+damage = 2.0
+cooldown = 4.0
+upgrades = Array[ExtResource("5_lge1q")]([SubResource("Resource_fulsm"), SubResource("Resource_4r5pv"), SubResource("Resource_60mlk"), SubResource("Resource_i4ail"), SubResource("Resource_a38lo")])
+item_needed = ExtResource("3_lge1q")
+evolution = ExtResource("1_e1xcb")
+title = "Lightning"
+icon = ExtResource("1_2t3ja")
+texture = ExtResource("4_e1xcb")
+metadata/_custom_type_script = "uid://bjy65agqjqmth"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d3uugy4yaoist" path="res://assets/Tiles/libro de ventisca helada.png" id="1_bxs10"]
 [ext_resource type="PackedScene" uid="uid://c8foq2seou0k8" path="res://scenes/projectile.tscn" id="1_h2b4q"]
-[ext_resource type="Script" uid="uid://cd5o2t5cue83x" path="res://SingleShot.gd" id="2_bxs10"]
+[ext_resource type="Script" uid="uid://cd5o2t5cue83x" path="res://scenes/SingleShot.gd" id="2_bxs10"]
 [ext_resource type="Texture2D" uid="uid://n6klm4fsvihg" path="res://assets/Tiles/Fuego_fatuors.png" id="4_bxs10"]
 [ext_resource type="Script" uid="uid://dctw2lhdoaop4" path="res://scenes/Upgrade.gd" id="4_wwtei"]
 

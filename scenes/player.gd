@@ -5,6 +5,8 @@ var health: float = 100:
 	set(value):
 		health = max(value, 0)
 		%Health.value = value
+		if health <= 0:
+			get_tree().paused = true
 
 var movement_speed: float = 150
 
@@ -13,9 +15,18 @@ var max_health: float = 100:
 		max_health = value
 		%Health.max_value = value
 
-var recovery: float = 0
-var armor: float = 0
-var might: float = 1.5
+var recovery: float = 0:
+	set(value):
+		recovery = value
+		%Recovery.text = "R : " + str(value)
+var armor: float = 0:
+	set(value):
+		armor = value
+		%Armor.text = "A : " + str(value)
+var might: float = 1.5:
+	set(value):
+		recovery = value
+		%Might.text = "M : " + str(value)
 var area: float = 100
 
 var magnet: float = 0:
@@ -55,6 +66,8 @@ var level: int = 1:
 		elif level >= 3:
 			%XP.max_value = 20
 
+func _ready() -> void:
+	Persistence.gain_bonus_stats(self)
 
 # Dirección que está mirando el personaje
 var last_direction: String = "front"
@@ -126,7 +139,7 @@ func play_idle() -> void:
 
 
 func take_damage(amount):
-	health -= max(amount - armor, 0)
+	health -= max(amount * (amount/(amount + armor)), 1)
 
 
 func _on_self_damage_body_entered(body: Node2D) -> void:

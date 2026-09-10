@@ -1,0 +1,262 @@
+[gd_scene format=3 uid="uid://yxu3g82vagdb"]
+
+[ext_resource type="PackedScene" uid="uid://be8i7634n480y" path="res://scenes/upgrade.tscn" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://1hsayy2ymlxd" path="res://scenes/skill_tree.gd" id="1_rtw2f"]
+[ext_resource type="Script" uid="uid://dpx2inggnb5nb" path="res://scenes/Skill.gd" id="2_wu84c"]
+[ext_resource type="Script" uid="uid://ewdyawjgpy5d" path="res://scenes/Stats.gd" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://bv5rr04q04qoe" path="res://assets/PassiveItems/might.png" id="4_rtw2f"]
+[ext_resource type="Script" uid="uid://wwbrmqppjspl" path="res://scenes/UI_Gold.gd" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://6v3ger23ffmf" path="res://assets/PassiveItems/armor.png" id="6_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://bwbonn1jdrs7a" path="res://assets/PassiveItems/health_potion.png" id="7_jk1qb"]
+[ext_resource type="Script" uid="uid://b0j2r55ndvi3u" path="res://scenes/start.gd" id="9_jk1qb"]
+
+[sub_resource type="Resource" id="Resource_hlccx"]
+script = ExtResource("3_8ln24")
+might = 0.1
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_dkd06"]
+script = ExtResource("2_wu84c")
+name = "Might I"
+texture = ExtResource("4_rtw2f")
+cost = 10
+stats = SubResource("Resource_hlccx")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_4kyw0"]
+script = ExtResource("3_8ln24")
+magnet = 0.2
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_15umn"]
+script = ExtResource("2_wu84c")
+name = "Might II"
+texture = ExtResource("4_rtw2f")
+cost = 100
+stats = SubResource("Resource_4kyw0")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_n14h7"]
+script = ExtResource("3_8ln24")
+might = 0.25
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_srp3q"]
+script = ExtResource("2_wu84c")
+name = "Might III"
+texture = ExtResource("4_rtw2f")
+cost = 1000
+stats = SubResource("Resource_n14h7")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_tbmy8"]
+script = ExtResource("3_8ln24")
+armor = 1.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_oa1go"]
+script = ExtResource("2_wu84c")
+name = "Armor I"
+texture = ExtResource("6_tbmy8")
+cost = 10
+stats = SubResource("Resource_tbmy8")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_flqon"]
+script = ExtResource("3_8ln24")
+armor = 3.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_lgwnu"]
+script = ExtResource("2_wu84c")
+name = "Armor II"
+texture = ExtResource("6_tbmy8")
+cost = 100
+stats = SubResource("Resource_flqon")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_5dd4i"]
+script = ExtResource("3_8ln24")
+armor = 2.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_jk1qb"]
+script = ExtResource("2_wu84c")
+name = "Armor III"
+texture = ExtResource("6_tbmy8")
+cost = 100
+stats = SubResource("Resource_5dd4i")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_1ajci"]
+script = ExtResource("3_8ln24")
+recovery = 0.1
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_rcqid"]
+script = ExtResource("2_wu84c")
+name = "Recovery I"
+texture = ExtResource("7_jk1qb")
+cost = 10
+stats = SubResource("Resource_1ajci")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_5pajh"]
+script = ExtResource("3_8ln24")
+recovery = 0.2
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_7b55j"]
+script = ExtResource("2_wu84c")
+name = "Recovery II"
+texture = ExtResource("7_jk1qb")
+cost = 100
+stats = SubResource("Resource_5pajh")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[sub_resource type="Resource" id="Resource_a8gd2"]
+script = ExtResource("3_8ln24")
+recovery = 0.4
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[sub_resource type="Resource" id="Resource_j7ex8"]
+script = ExtResource("2_wu84c")
+name = "Recovery III"
+texture = ExtResource("7_jk1qb")
+cost = 1000
+stats = SubResource("Resource_a8gd2")
+metadata/_custom_type_script = "uid://dpx2inggnb5nb"
+
+[node name="MainMenu" type="Control" unique_id=765261537]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillTree" type="Panel" parent="." unique_id=1153116992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtw2f")
+
+[node name="Might" type="Control" parent="SkillTree" unique_id=785340201]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrade" parent="SkillTree/Might" unique_id=822107595 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = -68.0
+offset_right = -28.0
+skill = SubResource("Resource_dkd06")
+
+[node name="Upgrade2" parent="SkillTree/Might" unique_id=932323312 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = -172.0
+offset_right = -132.0
+skill = SubResource("Resource_15umn")
+
+[node name="Upgrade3" parent="SkillTree/Might" unique_id=1341202595 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = -284.0
+offset_right = -244.0
+skill = SubResource("Resource_srp3q")
+
+[node name="Armor" type="Control" parent="SkillTree" unique_id=262063843]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Upgrade" parent="SkillTree/Armor" unique_id=1904322626 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 248.0
+offset_right = 592.0
+offset_bottom = 288.0
+skill = SubResource("Resource_oa1go")
+
+[node name="Upgrade2" parent="SkillTree/Armor" unique_id=1231873538 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 168.0
+offset_right = 592.0
+offset_bottom = 208.0
+skill = SubResource("Resource_lgwnu")
+
+[node name="Upgrade3" parent="SkillTree/Armor" unique_id=773469980 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 96.0
+offset_right = 592.0
+offset_bottom = 136.0
+skill = SubResource("Resource_jk1qb")
+
+[node name="Control" type="Control" parent="SkillTree" unique_id=1382486189]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Upgrade" parent="SkillTree/Control" unique_id=612387754 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 304.0
+offset_right = 656.0
+offset_bottom = 344.0
+skill = SubResource("Resource_rcqid")
+
+[node name="Upgrade2" parent="SkillTree/Control" unique_id=1551344409 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 304.0
+offset_right = 768.0
+offset_bottom = 344.0
+skill = SubResource("Resource_7b55j")
+
+[node name="Upgrade3" parent="SkillTree/Control" unique_id=78458369 instance=ExtResource("1_l6cm7")]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 304.0
+offset_right = 880.0
+offset_bottom = 344.0
+skill = SubResource("Resource_j7ex8")
+
+[node name="Gold" type="Label" parent="." unique_id=292597317]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 16.0
+offset_right = 1056.0
+offset_bottom = 39.0
+horizontal_alignment = 2
+script = ExtResource("5_8ln24")
+
+[node name="Start" type="Button" parent="." unique_id=33486191]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -136.0
+offset_right = 22.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+script = ExtResource("9_jk1qb")
+
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]

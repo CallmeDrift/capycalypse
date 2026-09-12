@@ -8,4 +8,5 @@ script = ExtResource("2_ja5oq")
 title = "Vacuum"
 icon = ExtResource("1_2jeke")
 description = "Gets all the gems, like CoD :3"
+weight = 3.0
 metadata/_custom_type_script = "uid://ct35k5br001wc"

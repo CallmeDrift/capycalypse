@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Capycalypse"
-run/main_scene="uid://bg0jfy5hndnk6"
+run/main_scene="uid://yxu3g82vagdb"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

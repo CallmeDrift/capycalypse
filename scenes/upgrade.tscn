@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://be8i7634n480y"]
 
 [ext_resource type="Script" uid="uid://dxo1r4oc2uith" path="res://scenes/upgrade_button.gd" id="1_xsw34"]
+[ext_resource type="PackedScene" uid="uid://8totwiwb1803" path="res://scenes/line_2d.tscn" id="2_b2g4b"]
 
 [node name="Upgrade" type="TextureButton" unique_id=822107595]
 offset_right = 40.0
@@ -15,5 +16,9 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 1
+
+[node name="Outline" parent="." unique_id=153880176 instance=ExtResource("2_b2g4b")]
+
+[node name="Connection" parent="." unique_id=237242323 instance=ExtResource("2_b2g4b")]
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

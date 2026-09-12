@@ -8,4 +8,5 @@ script = ExtResource("2_r573m")
 title = "Death"
 icon = ExtResource("1_otbyi")
 description = "Death all"
+weight = 1.0
 metadata/_custom_type_script = "uid://du7a8c075ra11"

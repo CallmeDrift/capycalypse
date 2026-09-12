@@ -8,4 +8,5 @@ script = ExtResource("2_fitfs")
 title = "Shanwich"
 icon = ExtResource("1_4jok8")
 description = "+20 Health"
+weight = 5.0
 metadata/_custom_type_script = "uid://7jv0prv6104"

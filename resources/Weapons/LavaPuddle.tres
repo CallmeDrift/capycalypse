@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MultiDamagingArea" format=3 uid="uid://dfu78qvkjrgi4"]
+
+[ext_resource type="Texture2D" uid="uid://ecan7o2co2yc" path="res://assets/Tiles/lava.png" id="1_wx4b3"]
+[ext_resource type="PackedScene" uid="uid://c8foq2seou0k8" path="res://scenes/projectile.tscn" id="2_ei1aa"]
+[ext_resource type="Script" uid="uid://cryabv51m3lrf" path="res://scenes/MultiDamagingArea.gd" id="3_3218p"]
+[ext_resource type="Texture2D" uid="uid://3n00vpaandpb" path="res://assets/Tiles/lava_attack.png" id="4_fc6cq"]
+[ext_resource type="Script" uid="uid://dctw2lhdoaop4" path="res://scenes/Upgrade.gd" id="5_46leo"]
+
+[resource]
+script = ExtResource("3_3218p")
+amount = 7
+area = 100.0
+delay = 0.1
+damage = 8.0
+cooldown = 4.0
+title = "LavaPuddle"
+icon = ExtResource("1_wx4b3")
+texture = ExtResource("4_fc6cq")
+metadata/_custom_type_script = "uid://cryabv51m3lrf"

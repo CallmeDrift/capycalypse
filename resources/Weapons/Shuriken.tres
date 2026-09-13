@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Blade" format=3 uid="uid://cwau3ph2vfg35"]
+
+[ext_resource type="Texture2D" uid="uid://xnl17bsye1bu" path="res://assets/Tiles/shuriken.png" id="1_42xhv"]
+[ext_resource type="Resource" uid="uid://feha7k7dk24w" path="res://resources/Weapons/DemonShuriken.tres" id="1_f5j8n"]
+[ext_resource type="Resource" uid="uid://mkdfjgid71wf" path="res://resources/Passives/Luck.tres" id="2_jgnsh"]
+[ext_resource type="PackedScene" uid="uid://c8foq2seou0k8" path="res://scenes/projectile.tscn" id="2_tdnc0"]
+[ext_resource type="Script" uid="uid://cyy2y5ebda3k2" path="res://scenes/Blade.gd" id="3_jgnsh"]
+[ext_resource type="Script" uid="uid://dctw2lhdoaop4" path="res://scenes/Upgrade.gd" id="4_f5j8n"]
+[ext_resource type="Script" uid="uid://smofnp82q7bn" path="res://scenes/BladeUpgrade.gd" id="5_tdnc0"]
+
+[sub_resource type="Resource" id="Resource_fulsm"]
+script = ExtResource("5_tdnc0")
+area = 1.0
+description = "+100% Area"
+metadata/_custom_type_script = "uid://smofnp82q7bn"
+
+[sub_resource type="Resource" id="Resource_jgnsh"]
+script = ExtResource("5_tdnc0")
+amount = 2.0
+description = "+2 Amount"
+metadata/_custom_type_script = "uid://smofnp82q7bn"
+
+[sub_resource type="Resource" id="Resource_tdnc0"]
+script = ExtResource("5_tdnc0")
+speed = 200.0
+description = "+200 Speed"
+metadata/_custom_type_script = "uid://smofnp82q7bn"
+
+[sub_resource type="Resource" id="Resource_f5j8n"]
+script = ExtResource("5_tdnc0")
+damage = 3.0
+description = "+3 Damage"
+metadata/_custom_type_script = "uid://smofnp82q7bn"
+
+[sub_resource type="Resource" id="Resource_aijyi"]
+script = ExtResource("5_tdnc0")
+amount = 2.0
+description = "+2 Amount"
+metadata/_custom_type_script = "uid://smofnp82q7bn"
+
+[resource]
+script = ExtResource("3_jgnsh")
+damage = 5.0
+cooldown = 3.0
+speed = 600.0
+upgrades = Array[ExtResource("4_f5j8n")]([SubResource("Resource_fulsm"), SubResource("Resource_jgnsh"), SubResource("Resource_tdnc0"), SubResource("Resource_f5j8n"), SubResource("Resource_aijyi")])
+item_needed = ExtResource("2_jgnsh")
+evolution = ExtResource("1_f5j8n")
+title = "Blade"
+icon = ExtResource("1_42xhv")
+texture = ExtResource("1_42xhv")
+metadata/_custom_type_script = "uid://cyy2y5ebda3k2"

@@ -10,7 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://6v3ger23ffmf" path="res://assets/PassiveItems/armor.png" id="6_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://bwbonn1jdrs7a" path="res://assets/PassiveItems/health_potion.png" id="7_jk1qb"]
 [ext_resource type="Script" uid="uid://b0j2r55ndvi3u" path="res://scenes/start.gd" id="9_jk1qb"]
+[ext_resource type="Script" uid="uid://c6kxvnl8ui2c8" path="res://scenes/character_list.gd" id="10_flqon"]
 [ext_resource type="Script" uid="uid://nxvt3k5emoyx" path="res://scenes/enemy_list.gd" id="10_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://cnx608bxtb6he" path="res://scenes/character_slot.tscn" id="11_rcqid"]
+[ext_resource type="Script" uid="uid://dofsgqm1lgkps" path="res://scenes/Character.gd" id="12_j7ex8"]
+[ext_resource type="Resource" uid="uid://dg54xj31nxrhq" path="res://resources/Characters/creepy_bunny.tres" id="13_a8gd2"]
+[ext_resource type="Resource" uid="uid://b03o7myku2g3g" path="res://resources/Characters/heavy_boar.tres" id="14_hstxw"]
+[ext_resource type="Resource" uid="uid://dlx5xjfgt1osv" path="res://resources/Characters/purple_bitter.tres" id="15_8egab"]
 
 [sub_resource type="Theme" id="Theme_jk1qb"]
 
@@ -273,7 +279,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Start"
-script = ExtResource("9_jk1qb")
 
 [node name="Upgrades" type="Button" parent="Menu" unique_id=889510654]
 layout_mode = 0
@@ -293,6 +298,7 @@ offset_bottom = 399.0
 text = "Beastiary"
 
 [node name="Beastiary" type="Panel" parent="." unique_id=87524485]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -375,6 +381,65 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Health :"
 
+[node name="CharacterSelection" type="Panel" parent="." unique_id=754124817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CharacterSelection" unique_id=665901690]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 584.0
+offset_bottom = 576.0
+
+[node name="CharacterList" type="GridContainer" parent="CharacterSelection/ScrollContainer" unique_id=1810596341]
+layout_mode = 2
+accessibility_region = true
+columns = 3
+script = ExtResource("10_flqon")
+character_slot = ExtResource("11_rcqid")
+characters = Array[ExtResource("12_j7ex8")]([ExtResource("13_a8gd2"), ExtResource("14_hstxw"), ExtResource("15_8egab")])
+
+[node name="Panel" type="Panel" parent="CharacterSelection" unique_id=1293801719]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 0
+offset_left = 816.0
+offset_top = 128.0
+offset_right = 976.0
+offset_bottom = 288.0
+
+[node name="StartingWeapon" type="TextureRect" parent="CharacterSelection/Panel" unique_id=480369777]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CharacterSelection/Panel/StartingWeapon" unique_id=2137988223]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -32.0
+offset_right = 145.0
+offset_bottom = -9.0
+text = "Starting Weapon"
+
+[node name="Start" type="Button" parent="CharacterSelection" unique_id=1385540894]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 432.0
+offset_right = 918.0
+offset_bottom = 463.0
+text = "Start
+"
+script = ExtResource("9_jk1qb")
+
 [node name="Gold" type="Label" parent="." unique_id=292597317]
 visible = false
 layout_mode = 0
@@ -394,7 +459,8 @@ offset_right = 1109.0
 offset_bottom = 623.0
 text = "Back"
 
-[connection signal="pressed" from="Menu/Start" to="Menu/Start" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="Menu/Beastiary" to="." method="_on_bestiary_pressed"]
+[connection signal="pressed" from="CharacterSelection/Start" to="CharacterSelection/Start" method="_on_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

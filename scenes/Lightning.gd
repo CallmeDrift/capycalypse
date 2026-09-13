@@ -23,6 +23,7 @@ func shoot(source: CharacterBody2D, scene_tree: SceneTree):
 		projectile.speed = 0
 		projectile.damage = damage
 		projectile.source = source
+		projectile.weapon = self
 		projectile.position = enemy.position
 		
 		projectile.find_child("Sprite2D").texture = texture

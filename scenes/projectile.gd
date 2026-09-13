@@ -5,6 +5,7 @@ var speed : float = 200
 var damage : float = 1
 var knockback : float = 90
 var source
+var weapon: Weapon
 
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
@@ -13,8 +14,13 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		if "might" in source:
 			body.take_damage(damage * source.might)
+			if weapon:
+				weapon.damage_dealt += damage * source.might
 		else:
 			body.take_damage(damage)
+			if weapon:
+				weapon.damage_dealt += damage
+		
 		body.knockback = direction * knockback
 
 

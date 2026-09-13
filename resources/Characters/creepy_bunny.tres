@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Character" format=3 uid="uid://dg54xj31nxrhq"]
+
+[ext_resource type="Script" uid="uid://ewdyawjgpy5d" path="res://scenes/Stats.gd" id="1_d1dq5"]
+[ext_resource type="Script" uid="uid://dofsgqm1lgkps" path="res://scenes/Character.gd" id="2_5hu3v"]
+[ext_resource type="Texture2D" uid="uid://bythibc0d0ohk" path="res://assets/Enemies/12.png" id="2_08sqk"]
+[ext_resource type="Resource" uid="uid://bdk2b6sjm0emx" path="res://resources/Weapons/Asteroid.tres" id="3_08sqk"]
+
+[sub_resource type="Resource" id="Resource_gdtim"]
+script = ExtResource("1_d1dq5")
+max_health = 100.0
+recovery = 1.0
+armor = 1.0
+movement_speed = 1.0
+might = 1.0
+area = 1.0
+magnet = 1.0
+growth = 1.0
+luck = 1.0
+metadata/_custom_type_script = "uid://ewdyawjgpy5d"
+
+[resource]
+script = ExtResource("2_5hu3v")
+title = "Creepy Bunny"
+icon = ExtResource("2_08sqk")
+animation_name = "bunny"
+base_stats = SubResource("Resource_gdtim")
+starting_weapon = ExtResource("3_08sqk")
+metadata/_custom_type_script = "uid://dofsgqm1lgkps"

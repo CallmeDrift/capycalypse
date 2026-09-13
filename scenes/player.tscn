@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dn37hjq73txbc"]
 
 [ext_resource type="Script" uid="uid://c3arrpa4jy0rd" path="res://scenes/player.gd" id="1_4flbx"]
+[ext_resource type="Resource" uid="uid://dg54xj31nxrhq" path="res://resources/Characters/creepy_bunny.tres" id="2_60mlk"]
 [ext_resource type="PackedScene" uid="uid://ep354j4vxu4u" path="res://scenes/slot.tscn" id="2_qhqgy"]
-[ext_resource type="Resource" uid="uid://bdowissa6rffw" path="res://resources/Weapons/ForceField.tres" id="3_oprun"]
 [ext_resource type="PackedScene" uid="uid://dshxipaifm5pk" path="res://scenes/passive_slot.tscn" id="4_smehm"]
 [ext_resource type="Texture2D" uid="uid://cauxosibavoyh" path="res://assets/ProgressBar/under.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://coqg7kvujfbs" path="res://assets/ProgressBar/progress.png" id="5_fjrip"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d32ei3nggubu8" path="res://scenes/options.gd" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://cwc7s3biee1tk" path="res://scenes/chest.gd" id="10_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://dm8uos02kprtf" path="res://assets/Gems/Fantasy RPG (Toony) 32x32.png" id="11_3v2ag"]
+[ext_resource type="Script" uid="uid://cwer1pgnbx7vj" path="res://scenes/report.gd" id="11_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://b8iaaebo2bog2" path="res://assets/Player/back/walk_back.png" id="12_oprun"]
 [ext_resource type="Texture2D" uid="uid://b88816l204lx2" path="res://assets/Player/front/walk_front.png" id="13_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://ccp4fw3ddfw0b" path="res://assets/Player/left/walk_left.png" id="14_qfm1y"]
@@ -326,6 +327,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=1570594621]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_4flbx")
+character = ExtResource("2_60mlk")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=839959596]
 
@@ -388,6 +390,7 @@ offset_bottom = 21.0
 text = "LEVEL UP"
 
 [node name="Weapons" type="HBoxContainer" parent="UI" unique_id=128611417]
+unique_name_in_owner = true
 offset_left = 10.0
 offset_top = 19.0
 offset_right = 138.0
@@ -395,7 +398,6 @@ offset_bottom = 59.0
 
 [node name="Slot" parent="UI/Weapons" unique_id=119528324 instance=ExtResource("2_qhqgy")]
 layout_mode = 2
-item = ExtResource("3_oprun")
 
 [node name="Slot2" parent="UI/Weapons" unique_id=616441908 instance=ExtResource("2_qhqgy")]
 layout_mode = 2
@@ -566,18 +568,69 @@ offset_bottom = 87.0
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Back" type="Button" parent="UI" unique_id=1279957066]
+[node name="Report" type="Panel" parent="UI" unique_id=770795232]
 process_mode = 3
-offset_left = 522.0
-offset_top = 431.0
-offset_right = 636.0
-offset_bottom = 462.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_a8ls1")
+
+[node name="Back" type="Button" parent="UI/Report" unique_id=1279957066]
+process_mode = 3
+layout_mode = 0
+offset_left = 21.0
+offset_top = 594.0
+offset_right = 135.0
+offset_bottom = 625.0
 text = "Back to Menu"
 script = ExtResource("16_60mlk")
+
+[node name="Continue" type="Button" parent="UI/Report" unique_id=651903176]
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 591.0
+offset_right = 1101.0
+offset_bottom = 622.0
+text = "Continue"
+
+[node name="Panel" type="Panel" parent="UI/Report" unique_id=1247214143]
+custom_minimum_size = Vector2(512, 240)
+layout_mode = 0
+offset_left = 321.0
+offset_top = 179.0
+offset_right = 833.0
+offset_bottom = 419.0
+
+[node name="Text" type="RichTextLabel" parent="UI/Report/Panel" unique_id=1323315164]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -88.0
+offset_right = 229.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="Status" type="Label" parent="UI/Report/Panel" unique_id=1994600348]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 5.0
+offset_right = 284.0
+offset_bottom = 28.0
+text = "Paused"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1734328309]
 visible = false
 texture = SubResource("PlaceholderTexture2D_4e7ql")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1317993110]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1547957822]
 shape = SubResource("RectangleShape2D_pvk3q")
@@ -613,12 +666,14 @@ unique_name_in_owner = true
 shape = SubResource("CircleShape2D_es033")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=246841220]
+visible = false
 sprite_frames = SubResource("SpriteFrames_2n622")
 animation = &"walk_right"
 
 [connection signal="pressed" from="UI/Chest/Open" to="UI/Chest" method="_on_open_pressed"]
 [connection signal="pressed" from="UI/Chest/Close" to="UI/Chest" method="_on_close_pressed"]
-[connection signal="pressed" from="UI/Back" to="UI/Back" method="_on_pressed"]
+[connection signal="pressed" from="UI/Report/Back" to="UI/Report/Back" method="_on_pressed"]
+[connection signal="pressed" from="UI/Report/Continue" to="UI/Report" method="_on_continue_pressed"]
 [connection signal="body_entered" from="SelfDamage" to="." method="_on_self_damage_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]

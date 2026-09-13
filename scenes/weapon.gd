@@ -13,8 +13,8 @@ class_name Weapon
 @export var evolution : Weapon
 @export var sound : AudioStream
 
-
 var slot
+var damage_dealt : float = 0
 
 func activate(_source, _target, _scene_tree):
 	pass

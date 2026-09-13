@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var character: Character
 
 var health: float = 100:
 	set(value):
@@ -69,6 +70,9 @@ var level: int = 1:
 
 func _ready() -> void:
 	Persistence.gain_bonus_stats(self)
+	character = Persistence.character
+	set_base_stats(character.base_stats)
+	%Options.check_item(character.starting_weapon)
 
 # Dirección que está mirando el personaje
 var last_direction: String = "front"
@@ -85,58 +89,55 @@ func _physics_process(delta: float) -> void:
 	# Obtener movimiento
 	velocity = Input.get_vector("left", "right", "up", "down") * movement_speed
 
-	# Actualizar animación
-	update_animation()
-
 	move_and_collide(velocity * delta)
-
+	#animation(delta)
 	check_XP()
 
 	health += recovery * delta
 
 
-func update_animation() -> void:
+#func update_animation() -> void:
+#
+	## DERECHA
+	#if velocity.x > 0:
+		#last_direction = "right"
+		#$AnimatedSprite2D.play("walk_right")
+#
+	## IZQUIERDA
+	#elif velocity.x < 0:
+		#last_direction = "left"
+		#$AnimatedSprite2D.play("walk_left")
+#
+	## ABAJO / FRENTE
+	#elif velocity.y > 0:
+		#last_direction = "front"
+		#$AnimatedSprite2D.play("walk_front")
+#
+	## ARRIBA / ATRÁS
+	#elif velocity.y < 0:
+		#last_direction = "back"
+		#$AnimatedSprite2D.play("walk_back")
+#
+	## NO SE ESTÁ MOVIENDO
+	#else:
+		#play_idle()
 
-	# DERECHA
-	if velocity.x > 0:
-		last_direction = "right"
-		$AnimatedSprite2D.play("walk_right")
 
-	# IZQUIERDA
-	elif velocity.x < 0:
-		last_direction = "left"
-		$AnimatedSprite2D.play("walk_left")
-
-	# ABAJO / FRENTE
-	elif velocity.y > 0:
-		last_direction = "front"
-		$AnimatedSprite2D.play("walk_front")
-
-	# ARRIBA / ATRÁS
-	elif velocity.y < 0:
-		last_direction = "back"
-		$AnimatedSprite2D.play("walk_back")
-
-	# NO SE ESTÁ MOVIENDO
-	else:
-		play_idle()
-
-
-func play_idle() -> void:
-
-	match last_direction:
-
-		"right":
-			$AnimatedSprite2D.play("idle_right")
-
-		"left":
-			$AnimatedSprite2D.play("idle_left")
-
-		"front":
-			$AnimatedSprite2D.play("idle_front")
-
-		"back":
-			$AnimatedSprite2D.play("idle_back")
+#func play_idle() -> void:
+#
+	#match last_direction:
+#
+		#"right":
+			#$AnimatedSprite2D.play("idle_right")
+#
+		#"left":
+			#$AnimatedSprite2D.play("idle_left")
+#
+		#"front":
+			#$AnimatedSprite2D.play("idle_front")
+#
+		#"back":
+			#$AnimatedSprite2D.play("idle_back")
 
 
 func take_damage(amount):
@@ -174,3 +175,25 @@ func gain_gold(amount):
 
 func open_chest():
 	$UI/Chest.open()
+
+func animation(_delta):
+	if velocity == Vector2.ZERO:
+		$AnimationPlayer.play("idle_"+character.animation_name)
+	else:
+		$AnimationPlayer.play("run_"+character.animation_name)
+	
+	if velocity.x < 0:
+		$Sprite2D.flip_h = true
+	elif velocity.x > 0:
+		$Sprite2D.flip_h = false
+
+func set_base_stats(base_stats: Stats):
+	max_health += base_stats.max_health
+	recovery += base_stats.recovery
+	armor += base_stats.armor
+	movement_speed += base_stats.movement_speed
+	might += base_stats.might
+	area += base_stats.area
+	magnet += base_stats.magnet
+	growth += base_stats.growth
+	luck += base_stats.luck

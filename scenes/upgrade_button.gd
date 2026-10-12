@@ -8,7 +8,6 @@ const COLOR_OWNED := Color(1, 0.55, 0.85, 1)
 const COLOR_LOCKED := Color(0.6, 0.45, 0.7, 1)
 const ICON_LOCKED := Color(0.35, 0.28, 0.42, 1)
 
-# true = se muestra como porcentaje, false = valor plano
 const STAT_FIELDS := {
 	"max_health": false,
 	"recovery": false,

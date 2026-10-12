@@ -20,7 +20,6 @@ might = 0.05
 magnet = 6.0
 growth = 0.05
 luck = 0.05
-metadata/_custom_type_script = "res://scenes/Stats.gd"
 
 [resource]
 script = ExtResource("2_char")
@@ -32,6 +31,6 @@ walk_front = ExtResource("6_wf")
 walk_back = ExtResource("7_wb")
 walk_left = ExtResource("8_wl")
 walk_right = ExtResource("9_wr")
+walk_fps = 5.0
 base_stats = SubResource("Resource_stats")
 starting_weapon = ExtResource("5_weapon")
-metadata/_custom_type_script = "res://scenes/Character.gd"

@@ -16,7 +16,6 @@ max_health = -15.0
 movement_speed = -6.0
 might = 0.25
 area = 15.0
-metadata/_custom_type_script = "res://scenes/Stats.gd"
 
 [resource]
 script = ExtResource("2_char")
@@ -27,7 +26,6 @@ preview_sheet = ExtResource("4_prev")
 walk_front = ExtResource("6_wf")
 walk_left = ExtResource("7_wl")
 walk_right = ExtResource("8_wr")
-sprite_scale = 0.75
+walk_fps = 5.0
 base_stats = SubResource("Resource_stats")
 starting_weapon = ExtResource("5_weapon")
-metadata/_custom_type_script = "res://scenes/Character.gd"

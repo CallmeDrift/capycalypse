@@ -10,7 +10,6 @@ extends GridContainer
 
 func _ready():
 	load_characters()
-	# El primer personaje (Miku) queda seleccionado por defecto
 	if get_child_count() > 0:
 		get_child(0).select()
 

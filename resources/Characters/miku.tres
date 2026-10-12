@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ewdyawjgpy5d" path="res://scenes/Stats.gd" id="1_stats"]
 [ext_resource type="Script" uid="uid://dofsgqm1lgkps" path="res://scenes/Character.gd" id="2_char"]
-[ext_resource type="Texture2D" uid="uid://cfllvx4jf7nr" path="res://assets/UI/characters/miku_icon.png" id="3_icon"]
-[ext_resource type="Texture2D" uid="uid://c02pmunk1orua" path="res://assets/UI/characters/miku_preview.png" id="4_prev"]
+[ext_resource type="Texture2D" uid="uid://chpnqvsgfrwk5" path="res://assets/UI/characters/miku_icon.png" id="3_icon"]
+[ext_resource type="Texture2D" uid="uid://cq18qwh574umk" path="res://assets/UI/characters/miku_preview.png" id="4_prev"]
 [ext_resource type="Resource" uid="uid://dhk2f76ska4k8" path="res://resources/Weapons/MagicWand.tres" id="5_weapon"]
 [ext_resource type="Texture2D" uid="uid://b88816l204lx2" path="res://assets/Player/front/walk_front.png" id="6_wf"]
 [ext_resource type="Texture2D" uid="uid://b8iaaebo2bog2" path="res://assets/Player/back/walk_back.png" id="7_wb"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="Resource" id="Resource_stats"]
 script = ExtResource("1_stats")
-description = "equilibrada y veloz, dispara hechizos"
+description = "mikudayo"
 max_health = 10.0
 recovery = 0.2
 movement_speed = 6.0

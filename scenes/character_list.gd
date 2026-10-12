@@ -31,4 +31,6 @@ func _on_pressed(character : Character):
 		preview.hframes = character.preview_frames
 		preview.frame = 0
 		var s: float = max(1.0, floor(140.0 / character.preview_sheet.get_height()))
+		if character.preview_scale > 0:
+			s = float(character.preview_scale)
 		preview.scale = Vector2(s, s)

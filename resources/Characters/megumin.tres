@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Character" format=3 uid="uid://dsownvyp6vlsg"]
+
+[ext_resource type="Script" uid="uid://ewdyawjgpy5d" path="res://scenes/Stats.gd" id="1_stats"]
+[ext_resource type="Script" uid="uid://dofsgqm1lgkps" path="res://scenes/Character.gd" id="2_char"]
+[ext_resource type="Texture2D" uid="uid://cjqp3m77oi44i" path="res://assets/UI/characters/megu_icon.png" id="3_icon"]
+[ext_resource type="Texture2D" uid="uid://dwtn6ndgl8nu2" path="res://assets/UI/characters/megu_preview.png" id="4_prev"]
+[ext_resource type="Resource" uid="uid://bdk2b6sjm0emx" path="res://resources/Weapons/Asteroid.tres" id="5_weapon"]
+[ext_resource type="Texture2D" uid="uid://dlk1ayqxwmkh5" path="res://assets/Player/megu/walk_front.png" id="6_wf"]
+[ext_resource type="Texture2D" uid="uid://jnipm8l00o76" path="res://assets/Player/megu/walk_left.png" id="7_wl"]
+[ext_resource type="Texture2D" uid="uid://cwwv5p1smv3sv" path="res://assets/Player/megu/walk_right.png" id="8_wr"]
+[ext_resource type="Texture2D" uid="uid://2d7i03ufabxv" path="res://assets/Player/megu/walk_back.png" id="9_wb"]
+
+[sub_resource type="Resource" id="Resource_stats"]
+script = ExtResource("1_stats")
+description = "ola diego t amo muxo :333"
+max_health = -15.0
+movement_speed = -6.0
+might = 0.25
+area = 15.0
+
+[resource]
+script = ExtResource("2_char")
+title = "Megumin"
+icon = ExtResource("3_icon")
+animation_name = "megu"
+preview_sheet = ExtResource("4_prev")
+walk_front = ExtResource("6_wf")
+walk_back = ExtResource("9_wb")
+walk_left = ExtResource("7_wl")
+walk_right = ExtResource("8_wr")
+walk_fps = 5.0
+base_stats = SubResource("Resource_stats")
+starting_weapon = ExtResource("5_weapon")

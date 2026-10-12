@@ -53,7 +53,7 @@ var nearest_enemy_distance: float = 150 + area
 var gold: int = 0:
 	set(value):
 		gold = value
-		%Gold.text = "Gold : " + str(value)
+		%Gold.text = str(value)
 
 
 var XP: int = 0:
@@ -79,6 +79,10 @@ func _ready() -> void:
 	Persistence.gain_bonus_stats(self)
 	if Persistence.character != null:
 		character = Persistence.character
+	if character == null:
+		# Por si se ejecuta test_scene directamente sin pasar por el menu
+		character = load("res://resources/Characters/miku.tres")
+	setup_sprites()
 	set_base_stats(character.base_stats)
 	%Options.check_item(character.starting_weapon)
 
@@ -98,54 +102,89 @@ func _physics_process(delta: float) -> void:
 	velocity = Input.get_vector("left", "right", "up", "down") * movement_speed
 
 	move_and_collide(velocity * delta)
-	#animation(delta)
+	update_animation()
 	check_XP()
 
 	health += recovery * delta
 
 
-#func update_animation() -> void:
-#
-	## DERECHA
-	#if velocity.x > 0:
-		#last_direction = "right"
-		#$AnimatedSprite2D.play("walk_right")
-#
-	## IZQUIERDA
-	#elif velocity.x < 0:
-		#last_direction = "left"
-		#$AnimatedSprite2D.play("walk_left")
-#
-	## ABAJO / FRENTE
-	#elif velocity.y > 0:
-		#last_direction = "front"
-		#$AnimatedSprite2D.play("walk_front")
-#
-	## ARRIBA / ATRÁS
-	#elif velocity.y < 0:
-		#last_direction = "back"
-		#$AnimatedSprite2D.play("walk_back")
-#
-	## NO SE ESTÁ MOVIENDO
-	#else:
-		#play_idle()
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var portrait: AnimatedSprite2D = %PortraitSprite
 
 
-#func play_idle() -> void:
-#
-	#match last_direction:
-#
-		#"right":
-			#$AnimatedSprite2D.play("idle_right")
-#
-		#"left":
-			#$AnimatedSprite2D.play("idle_left")
-#
-		#"front":
-			#$AnimatedSprite2D.play("idle_front")
-#
-		#"back":
-			#$AnimatedSprite2D.play("idle_back")
+# wawa
+func setup_sprites() -> void:
+	var frames := build_walk_frames(character)
+	if frames == null:
+		return
+
+	sprite.sprite_frames = frames
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	sprite.scale = Vector2.ONE * character.sprite_scale
+	sprite.visible = true
+	update_animation()
+
+	# El retrato del HUD es estatico: se queda en el primer frame de frente
+	var frame_size: Vector2 = frames.get_frame_texture("walk_front", 0).get_size()
+	portrait.sprite_frames = frames
+	portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	portrait.scale = Vector2.ONE * maxf(1.0, snappedf(64.0 / maxf(frame_size.x, frame_size.y), 0.5))
+	portrait.animation = "walk_front"
+	portrait.stop()
+	portrait.frame = 0
+
+
+func build_walk_frames(c: Character) -> SpriteFrames:
+	if c == null or c.walk_front == null:
+		return null
+
+	var sheets := {
+		"front": c.walk_front,
+		"back": c.walk_back if c.walk_back else c.walk_front,
+		"left": c.walk_left if c.walk_left else c.walk_front,
+		"right": c.walk_right if c.walk_right else c.walk_front,
+	}
+
+	var frames := SpriteFrames.new()
+	frames.remove_animation("default")
+	var count: int = maxi(c.walk_frames, 1)
+
+	for dir in sheets:
+		var sheet: Texture2D = sheets[dir]
+		var anim_name: String = "walk_" + dir
+		var frame_w: int = ceili(sheet.get_width() / float(count))
+		frames.add_animation(anim_name)
+		frames.set_animation_speed(anim_name, c.walk_fps)
+		frames.set_animation_loop(anim_name, true)
+		for i in count:
+			var atlas := AtlasTexture.new()
+			atlas.atlas = sheet
+			var x: int = i * frame_w
+			atlas.region = Rect2(x, 0, mini(frame_w, sheet.get_width() - x), sheet.get_height())
+			frames.add_frame(anim_name, atlas)
+
+	return frames
+
+
+func update_animation() -> void:
+	if sprite == null or sprite.sprite_frames == null:
+		return
+
+	if velocity != Vector2.ZERO:
+		if velocity.x > 0:
+			last_direction = "right"
+		elif velocity.x < 0:
+			last_direction = "left"
+		elif velocity.y > 0:
+			last_direction = "front"
+		else:
+			last_direction = "back"
+		sprite.play("walk_" + last_direction)
+	else:
+		# Quieto: se queda en el primer frame mirando hacia donde iba
+		sprite.animation = "walk_" + last_direction
+		sprite.stop()
+		sprite.frame = 0
 
 
 func take_damage(amount):
@@ -183,17 +222,6 @@ func gain_gold(amount):
 
 func open_chest():
 	$UI/Chest.open()
-
-func animation(_delta):
-	if velocity == Vector2.ZERO:
-		$AnimationPlayer.play("idle_"+character.animation_name)
-	else:
-		$AnimationPlayer.play("run_"+character.animation_name)
-	
-	if velocity.x < 0:
-		$Sprite2D.flip_h = true
-	elif velocity.x > 0:
-		$Sprite2D.flip_h = false
 
 func set_base_stats(base_stats: Stats):
 	max_health += base_stats.max_health

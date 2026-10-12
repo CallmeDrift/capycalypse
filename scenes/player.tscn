@@ -3,18 +3,12 @@
 [ext_resource type="Script" uid="uid://c3arrpa4jy0rd" path="res://scenes/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://ep354j4vxu4u" path="res://scenes/slot.tscn" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dshxipaifm5pk" path="res://scenes/passive_slot.tscn" id="4_smehm"]
-[ext_resource type="Texture2D" uid="uid://cauxosibavoyh" path="res://assets/ProgressBar/under.png" id="4_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://coqg7kvujfbs" path="res://assets/ProgressBar/progress.png" id="5_fjrip"]
-[ext_resource type="Texture2D" uid="uid://dap88h8ct8dnm" path="res://assets/ProgressBar/over.png" id="6_smehm"]
 [ext_resource type="Script" uid="uid://d32ei3nggubu8" path="res://scenes/options.gd" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://cwc7s3biee1tk" path="res://scenes/chest.gd" id="10_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://dm8uos02kprtf" path="res://assets/Gems/Fantasy RPG (Toony) 32x32.png" id="11_3v2ag"]
 [ext_resource type="Script" uid="uid://cwer1pgnbx7vj" path="res://scenes/report.gd" id="11_a8ls1"]
-[ext_resource type="Texture2D" uid="uid://d2ws0tte8qhmw" path="res://assets/Health/Health_under.png" id="12_fulsm"]
 [ext_resource type="Texture2D" uid="uid://b8iaaebo2bog2" path="res://assets/Player/back/walk_back.png" id="12_oprun"]
-[ext_resource type="Texture2D" uid="uid://bs2yulnlm1fvs" path="res://assets/Health/Health_over.png" id="12_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://b88816l204lx2" path="res://assets/Player/front/walk_front.png" id="13_a8ls1"]
-[ext_resource type="Texture2D" uid="uid://cx52a64avtjov" path="res://assets/Health/Health_progress.png" id="13_fulsm"]
 [ext_resource type="Texture2D" uid="uid://ccp4fw3ddfw0b" path="res://assets/Player/left/walk_left.png" id="14_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://47yipkkuatxa" path="res://assets/Player/right/walk_right.png" id="15_fulsm"]
 [ext_resource type="Script" uid="uid://jj2bfaxuogxo" path="res://scenes/back.gd" id="16_60mlk"]
@@ -24,6 +18,64 @@ particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(640, 1, 1)
 gravity = Vector3(0, 98, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_panel"]
+bg_color = Color(0.12, 0.08, 0.06, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.58, 0.4, 0.22, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_portrait"]
+bg_color = Color(0.22, 0.15, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.36, 0.24, 0.14, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_bar_bg"]
+bg_color = Color(0.06, 0.04, 0.03, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.2, 0.12, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_health"]
+bg_color = Color(0.84, 0.2, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.2, 0.12, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_xp"]
+bg_color = Color(0.29, 0.66, 0.78, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.2, 0.12, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_coin"]
+bg_color = Color(1, 0.83, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.45, 0.06, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
 atlas = ExtResource("11_3v2ag")
@@ -334,9 +386,9 @@ script = ExtResource("1_4flbx")
 
 [node name="Debug" type="VBoxContainer" parent="UI" unique_id=1387673828]
 offset_left = 12.0
-offset_top = 112.0
+offset_top = 201.0
 offset_right = 52.0
-offset_bottom = 189.0
+offset_bottom = 278.0
 
 [node name="Might" type="Label" parent="UI/Debug" unique_id=1043535535]
 unique_name_in_owner = true
@@ -352,15 +404,6 @@ text = "A : 1"
 unique_name_in_owner = true
 layout_mode = 2
 text = "R : 1"
-
-[node name="Gold" type="Label" parent="UI" unique_id=1402678904]
-unique_name_in_owner = true
-offset_left = 449.0
-offset_top = 56.0
-offset_right = 557.0
-offset_bottom = 79.0
-text = "Gold: 0"
-horizontal_alignment = 2
 
 [node name="Particle" type="GPUParticles2D" parent="UI" unique_id=731599180]
 process_mode = 3
@@ -393,9 +436,9 @@ text = "LEVEL UP"
 [node name="Weapons" type="HBoxContainer" parent="UI" unique_id=128611417]
 unique_name_in_owner = true
 offset_left = 10.0
-offset_top = 19.0
+offset_top = 108.0
 offset_right = 138.0
-offset_bottom = 59.0
+offset_bottom = 148.0
 
 [node name="Slot" parent="UI/Weapons" unique_id=119528324 instance=ExtResource("2_qhqgy")]
 layout_mode = 2
@@ -408,9 +451,9 @@ layout_mode = 2
 
 [node name="PassiveItems" type="HBoxContainer" parent="UI" unique_id=1427655562]
 offset_left = 10.0
-offset_top = 64.0
+offset_top = 153.0
 offset_right = 138.0
-offset_bottom = 104.0
+offset_bottom = 193.0
 
 [node name="PassiveSlot" parent="UI/PassiveItems" unique_id=2137252985 instance=ExtResource("4_smehm")]
 layout_mode = 2
@@ -421,25 +464,88 @@ layout_mode = 2
 [node name="PassiveSlot3" parent="UI/PassiveItems" unique_id=1677006422 instance=ExtResource("4_smehm")]
 layout_mode = 2
 
-[node name="XP" type="TextureProgressBar" parent="UI" unique_id=621973789]
-unique_name_in_owner = true
-offset_left = 3.0
-offset_top = -44.0
-offset_right = 603.0
-offset_bottom = 36.0
-max_value = 10.0
-texture_under = ExtResource("4_tuyoq")
-texture_over = ExtResource("5_fjrip")
-texture_progress = ExtResource("6_smehm")
+[node name="PlayerHUD" type="Panel" parent="UI" unique_id=563289704]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 330.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
 
-[node name="Level" type="Label" parent="UI/XP" unique_id=2145076732]
+[node name="PortraitFrame" type="Panel" parent="UI/PlayerHUD" unique_id=1627519532]
+clip_contents = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 82.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_portrait")
+
+[node name="PortraitSprite" type="AnimatedSprite2D" parent="UI/PlayerHUD/PortraitFrame" unique_id=1948155482]
+unique_name_in_owner = true
+position = Vector2(37, 37)
+
+[node name="Health" type="ProgressBar" parent="UI/PlayerHUD" unique_id=2137865876]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 518.0
-offset_top = 76.0
-offset_right = 558.0
-offset_bottom = 99.0
-text = "Lvl1"
+offset_left = 92.0
+offset_top = 10.0
+offset_right = 312.0
+offset_bottom = 30.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hud_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hud_health")
+value = 100.0
+show_percentage = false
+
+[node name="XP" type="ProgressBar" parent="UI/PlayerHUD" unique_id=1261991090]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 92.0
+offset_top = 35.0
+offset_right = 312.0
+offset_bottom = 49.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hud_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hud_xp")
+max_value = 10.0
+show_percentage = false
+
+[node name="Level" type="Label" parent="UI/PlayerHUD" unique_id=1348570158]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 92.0
+offset_top = 56.0
+offset_right = 164.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.03, 1)
+theme_override_constants/outline_size = 4
+text = "Lv 1"
+vertical_alignment = 1
+
+[node name="Coin" type="Panel" parent="UI/PlayerHUD" unique_id=1465819080]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 62.0
+offset_right = 190.0
+offset_bottom = 76.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_coin")
+
+[node name="Gold" type="Label" parent="UI/PlayerHUD" unique_id=1699547593]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 196.0
+offset_top = 56.0
+offset_right = 312.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.03, 1)
+theme_override_constants/outline_size = 4
+text = "0"
+vertical_alignment = 1
 
 [node name="Options" type="VBoxContainer" parent="UI" unique_id=122327458 node_paths=PackedStringArray("weapons", "passive_items", "particles", "panel")]
 unique_name_in_owner = true
@@ -627,21 +733,6 @@ offset_right = 284.0
 offset_bottom = 28.0
 text = "Paused"
 
-[node name="Health" type="TextureProgressBar" parent="UI" unique_id=1936455206]
-unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.62200004
-anchor_top = 0.080000006
-anchor_right = 0.62200004
-anchor_bottom = 0.080000006
-offset_left = 361.45593
-offset_top = -41.840004
-offset_right = 425.45593
-offset_bottom = -29.840004
-texture_under = ExtResource("12_fulsm")
-texture_over = ExtResource("12_qfm1y")
-texture_progress = ExtResource("13_fulsm")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1734328309]
 visible = false
 texture = SubResource("PlaceholderTexture2D_4e7ql")
@@ -673,7 +764,6 @@ unique_name_in_owner = true
 shape = SubResource("CircleShape2D_es033")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=246841220]
-visible = false
 sprite_frames = SubResource("SpriteFrames_2n622")
 animation = &"walk_right"
 
